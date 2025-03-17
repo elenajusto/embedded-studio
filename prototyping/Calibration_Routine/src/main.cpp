@@ -12,7 +12,7 @@ void loop()
 
 void calibrateAccelerometer()
 {
-    DEFINE orientations = ["+X Up", "-X Up", "+Y Up", "-Y Up", "+Z Up", "-Z Up"]
+    DEFINE orientations = ["X Up", "X Down", "X Up", "Y Down", "Z Up", "Z Down"]
     DEFINE rawData = [xPlus, xMinus, yPlus, yMinus, zPlus, zMinus]
 
     FOR each orientation in orientations DO
