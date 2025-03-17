@@ -10,9 +10,9 @@ unsigned long lastButtonPressTime = 0;
 void setup() {
 
     // Initialise LEDs
-    pinMode(LED_1, OUTPUT);
-    pinMode(LED_2, OUTPUT);
-    pinMode(LED_3, OUTPUT);
+    pinMode(LED_1, INPUT);
+    pinMode(LED_2, INPUT);
+    pinMode(LED_3, INPUT);
 
     // Initialise Buttons
     pinMode(BUTTON_1, INPUT);
@@ -35,12 +35,24 @@ void setup() {
 
     // Initialise starting state
     currentState = IDLE;
+
+
+    digitalWrite(LED_1, LOW); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
+    digitalWrite(LED_2, LOW); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
+    digitalWrite(LED_3, LOW); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
+
+    delay(1000);
+    digitalWrite(LED_1, HIGH); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
+    digitalWrite(LED_2, HIGH); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
+    digitalWrite(LED_3, HIGH); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
+    delay(1000);
 }
 
 /* Main Program */
 void loop() {
 
     /* Listening for button presses */
+  
     buttonListener(BUTTON_1, lastButtonPressTime);
     buttonListener(BUTTON_2, lastButtonPressTime);
     buttonListener(BUTTON_3, lastButtonPressTime);
@@ -76,16 +88,21 @@ void buttonListener(int buttonPin, unsigned long &lastButtonPressTime) {
         
         if (buttonPin == BUTTON_1) {
             Serial.println("Button 1");
+            pinMode(LED_1, OUTPUT);
+            digitalWrite(LED_1, HIGH); // Debug - Blink LED 1 - REMOVE WHEN INDICATOR LOGIC READY
             lastButtonPressTime = millis();
             return;
         }
         if (buttonPin == BUTTON_2) {
             Serial.println("Button 2");
+            pinMode(LED_1, INPUT);
+            digitalWrite(LED_2, HIGH); // Debug - Blink LED 2 - REMOVE WHEN INDICATOR LOGIC READY
             lastButtonPressTime = millis();
             return;
         }
         if (buttonPin == BUTTON_3) {
             Serial.println("Button 3");
+            digitalWrite(LED_3, HIGH); // Debug - Blink LED 3 - REMOVE WHEN INDICATOR LOGIC READY
             lastButtonPressTime = millis();
             return;
         }
