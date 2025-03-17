@@ -19,7 +19,15 @@
 #define LED_2 D4
 #define LED_3 D5
 #define BUZZ D6
+
+#define BUTTON_1 D8
+#define BUTTON_2 D9
+#define BUTTON_3 D10
+
 #define ST_SWITCH D7
+
+/* Delays */
+unsigned long debounceDelay = 200; // Debounce delay in milliseconds
 
 /* State Definitions */
 enum State { 
@@ -40,6 +48,8 @@ void handleSelfTestState();
 void handleBatteryMonitor();
 
 // Other
+void buttonListener(int buttonPin, unsigned long &lastButtonPressTime);
+
 bool buttonPressed();
 void calibrateAccelerometer();
 int detectSteps();
