@@ -30,4 +30,21 @@ enum State {
     BATTERY_MONITOR 
 };
 
+/* Function Definitions */
+
+// State Functions
+void handleIdleState();
+void handleCalibrationState();
+void handleTrackingState();
+void handleSelfTestState();
+void handleBatteryMonitor();
+
+// Other
+bool buttonPressed();
+void calibrateAccelerometer();
+int detectSteps();
+void displayStepCount(int steps);
+void runSelfTest();
+void checkBatteryLevel();
+
 #endif /* MAIN_H_ */

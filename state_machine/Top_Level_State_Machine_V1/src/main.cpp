@@ -2,6 +2,10 @@
 #include <Wire.h>
 #include "main.h"
 
+/* Initialise state */
+State currentState;
+
+/* Program Setup */
 void setup() {
 
     // Initialise LEDs
@@ -22,13 +26,14 @@ void setup() {
     pinMode(SIGNAL_Y, INPUT);
     pinMode(SIGNAL_Z, INPUT);
 
-    // Initialise starting state
-    State currentState = IDLE;
-
     // Initialise communications
     Serial.begin(115200);
+
+    // Initialise starting state
+    currentState = IDLE;
 }
 
+/* Main Program */
 void loop() {
     switch (currentState) {
         case IDLE:
@@ -49,60 +54,25 @@ void loop() {
     }
 }
 
-void handleIdleState() {
-    if (buttonPressed()) {
-        currentState = CALIBRATION;
-    }
-}
+/* Function Definitions */
 
-void handleCalibrationState() {
-    calibrateAccelerometer();
-    currentState = IDLE;
-}
+// State Function Definitions
+void handleIdleState(){
+    Serial.println("[state-handle] Function triggered."); // Debug statement
+};
 
-void handleTrackingState() {
-    int steps = detectSteps();
-    displayStepCount(steps);
-    if (userStopsTracking()) {
-        currentState = IDLE;
-    }
-}
+void handleCalibrationState(){
+    Serial.println("[state-calibration] Function triggered."); // Debug statement
+};
 
-void handleSelfTestState() {
-    runSelfTest();
-    currentState = IDLE;
-}
+void handleTrackingState(){
+    Serial.println("[state-tracking] Function triggered."); // Debug statement
+};
 
-void handleBatteryMonitor() {
-    checkBatteryLevel();
-    currentState = IDLE;
-}
+void handleSelfTestState(){
+    Serial.println("[state-testing] Function triggered."); // Debug statement
+};
 
-bool buttonPressed() {
-    return digitalRead(BUTTON_PIN) == HIGH;
-}
-
-void calibrateAccelerometer() {
-    Serial.println("Calibrating...");
-    // Implement calibration logic
-}
-
-int detectSteps() {
-    // Implement step detection logic
-    return 0; 
-}
-
-void displayStepCount(int steps) {
-    Serial.print("Steps: ");
-    Serial.println(steps);
-}
-
-void runSelfTest() {
-    Serial.println("Running Self-Test...");
-    // Implement self-test
-}
-
-void checkBatteryLevel() {
-    Serial.println("Checking battery level...");
-    // Implement battery monitoring
-}
+void handleBatteryMonitor(){
+    Serial.println("[state-battery] Function triggered."); // Debug statement
+;}
