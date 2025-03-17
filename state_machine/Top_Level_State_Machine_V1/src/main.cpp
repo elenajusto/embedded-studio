@@ -1,17 +1,32 @@
 #include <Arduino.h>
 #include <Wire.h>
-
-#define BUTTON_PIN 2
-#define LED_PIN 13
-
-enum State { IDLE, CALIBRATION, ACTIVE_TRACKING, SELF_TEST, BATTERY_MONITOR };
-State currentState = IDLE;
+#include "main.h"
 
 void setup() {
+
+    // Initialise LEDs
+    pinMode(LED_1, OUTPUT);
+    pinMode(LED_2, OUTPUT);
+    pinMode(LED_3, OUTPUT);
+
+    // Initialise Buttons
+    
+    // Initialise Buzzer
+    pinMode(BUZZ, OUTPUT);
+
+    // Initialise ST
+    pinMode(ST_SWITCH, OUTPUT);
+
+    // Initialise ADCs
+    pinMode(SIGNAL_X, INPUT);
+    pinMode(SIGNAL_Y, INPUT);
+    pinMode(SIGNAL_Z, INPUT);
+
+    // Initialise starting state
+    State currentState = IDLE;
+
+    // Initialise communications
     Serial.begin(115200);
-    pinMode(BUTTON_PIN, INPUT);
-    pinMode(LED_PIN, OUTPUT);
-    initializeAccelerometer();
 }
 
 void loop() {
