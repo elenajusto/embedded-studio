@@ -28,6 +28,8 @@
 
 /* Delays */
 unsigned long debounceDelay = 200; // Debounce delay in milliseconds
+int buzzFreq = 2500;
+long buzzDuration = 100;
 
 /* State Definitions */
 enum State { 
@@ -49,6 +51,7 @@ void handleBatteryMonitor();
 
 // Other
 void buttonListener(int buttonPin, unsigned long &lastButtonPressTime);
+void beep();
 
 bool buttonPressed();
 void calibrateAccelerometer();
