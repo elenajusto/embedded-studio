@@ -30,37 +30,48 @@ void startCalibration() {
 }
 
 void updateCalibratedValues() {
-  if (state == 1) {
+  if (state == 1) 
+  {
     Serial.println("Step 1: Place sensor with +X facing UP");
     delay(5000);
     PositiveX = getAverageReading(A2);
     Serial.println("Positive X collected.");
     state = 2;
-  } else if (state == 2) {
+  } 
+  else if (state == 2) 
+  {
     Serial.println("Step 2: Place sensor with -X facing UP");
     delay(5000);
     NegativeX = getAverageReading(A2);
     Serial.println("Negative X collected.");
     state = 3;
-  } else if (state == 3) {
+  } 
+  else if (state == 3) 
+  {
     Serial.println("Step 3: Place sensor with +Y facing UP");
     delay(5000);
     PositiveY = getAverageReading(A1);
     Serial.println("Positive Y collected.");
     state = 4;
-  } else if (state == 4) {
+  } 
+  else if (state == 4) 
+  {
     Serial.println("Step 4: Place sensor with -Y facing UP");
     delay(5000);
     NegativeY = getAverageReading(A1);
     Serial.println("Negative Y collected.");
     state = 5;
-  } else if (state == 5) {
+  } 
+  else if (state == 5) 
+  {
     Serial.println("Step 5: Place sensor with +Z facing UP");
     delay(5000);
     PositiveZ = getAverageReading(A0);
     Serial.println("Positive Z collected.");
     state = 6;
-  } else if (state == 6) {
+  } 
+  else if (state == 6) 
+  {
     Serial.println("Step 6: Place sensor with -Z facing UP");
     delay(5000);
     NegativeZ = getAverageReading(A0);
@@ -84,7 +95,9 @@ void updateCalibratedValues() {
 
     state = 7;
     delay(2000);
-  } else if (state == 7) {
+  } 
+  else if (state == 7) 
+  {
     float rawX = analogRead(A2);
     float rawY = analogRead(A1);
     float rawZ = analogRead(A0);
@@ -92,5 +105,9 @@ void updateCalibratedValues() {
     XG = (rawX - OffsetX) / ScaleX;
     YG = (rawY - OffsetY) / ScaleY;
     ZG = (rawZ - OffsetZ) / ScaleZ;
+
+    Serial.print(">X: "); Serial.println(XG);
+    Serial.print(">Y: "); Serial.println(YG);
+    Serial.print(">Z: "); Serial.println(ZG);
   }
 }
