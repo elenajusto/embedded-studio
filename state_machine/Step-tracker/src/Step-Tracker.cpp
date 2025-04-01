@@ -1,5 +1,7 @@
 #include "Calibration.h"
+#include "PaceTracking.h"
 #include "StepTracking.h"
+
 
 void setup() {
     startCalibration(); // Starts calibration process (only runs once)
@@ -13,6 +15,8 @@ void loop()
     if (isCalibrationDone()) 
     {
         checkForSteps();
+
+        classifyPace();
     }
     
 }
