@@ -19,10 +19,12 @@ void classifyPace()
     String currentPace = "";
 
     // Classify pace based on the time difference between steps
-    if (timeDiff >= WALKING_THRESHOLD_TIME) {
+    if (timeDiff >= WALKING_THRESHOLD_TIME) 
+    {
         currentPace = "Walking";
     } 
-    else if (timeDiff >= JOGGING_THRESHOLD_TIME && timeDiff < WALKING_THRESHOLD_TIME) {
+    else if (timeDiff >= JOGGING_THRESHOLD_TIME && timeDiff < WALKING_THRESHOLD_TIME) 
+    {
         currentPace = "Jogging";
     } 
     else if (timeDiff <= RUNNING_THRESHOLD_TIME) {
