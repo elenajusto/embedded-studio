@@ -9,7 +9,7 @@ unsigned long lastStepTime = 0;
 // Define constants for step detection
 const float STEP_THRESHOLD = 1.1;
 const unsigned long STEP_DEBOUNCE_MS = 300;
-const unsigned long SAMPLE_INTERVAL_MS = 10;
+const unsigned long SAMPLE_INTERVAL_MS = 0;
 
 unsigned long lastSampleTime = 0;  // To track the last time we sampled the accelerometer
 

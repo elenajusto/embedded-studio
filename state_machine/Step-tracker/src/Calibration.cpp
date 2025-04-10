@@ -1,4 +1,5 @@
 #include "Calibration.h"
+#include "BoardConfig.h"
 
 int state = 1;
 
@@ -42,32 +43,32 @@ void updateCalibratedValues() {
       {
         case 1:
           Serial.println("Step 1: +X facing UP");
-          PositiveX = getAverageReading(A2);
+          PositiveX = getAverageReading(PIN_SIGNAL_X);
           Serial.println("Positive X collected.");
           break;
         case 2:
           Serial.println("Step 2: -X facing UP");
-          NegativeX = getAverageReading(A2);
+          NegativeX = getAverageReading(PIN_SIGNAL_X);
           Serial.println("Negative X collected.");
           break;
         case 3:
           Serial.println("Step 3: +Y facing UP");
-          PositiveY = getAverageReading(A1);
+          PositiveY = getAverageReading(PIN_SIGNAL_Y);
           Serial.println("Positive Y collected.");
           break;
         case 4:
           Serial.println("Step 4: -Y facing UP");
-          NegativeY = getAverageReading(A1);
+          NegativeY = getAverageReading(PIN_SIGNAL_Y);
           Serial.println("Negative Y collected.");
           break;
         case 5:
           Serial.println("Step 5: +Z facing UP");
-          PositiveZ = getAverageReading(A0);
+          PositiveZ = getAverageReading(PIN_SIGNAL_Z);
           Serial.println("Positive Z collected.");
           break;
         case 6:
           Serial.println("Step 6: -Z facing UP");
-          NegativeZ = getAverageReading(A0);
+          NegativeZ = getAverageReading(PIN_SIGNAL_Z);
           Serial.println("Negative Z collected.");
 
           // Compute offsets
@@ -114,9 +115,9 @@ void updateCalibratedValues() {
   }
 
   else if (state == 8) {
-    float rawX = analogRead(A2);
-    float rawY = analogRead(A1);
-    float rawZ = analogRead(A0);
+    float rawX = analogRead(PIN_SIGNAL_X);
+    float rawY = analogRead(PIN_SIGNAL_Y);
+    float rawZ = analogRead(PIN_SIGNAL_Z);
 
     XG = (rawX - OffsetX) / ScaleX;
     YG = (rawY - OffsetY) / ScaleY;
