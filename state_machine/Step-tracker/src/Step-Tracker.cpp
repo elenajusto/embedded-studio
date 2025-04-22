@@ -14,19 +14,19 @@ void loop()
     switch (Setup)
     {
     case 1:
-    //Self-Test
-    
+    //Set-Up Menu
+    //gives the options of selecting self-test routine or calibration
     case 2:
         //setup
-        updateCalibratedValues();
+
         break;
     
     default:
-        //menu
+
         break;
     }
 
-
+/*
     updateCalibratedValues();  // Continuously updates XG, YG, ZG
     // Wait until calibration is complete
     if (isCalibrationDone()) 
@@ -35,5 +35,5 @@ void loop()
 
         classifyPace();
     }
-    
+*/
 }
