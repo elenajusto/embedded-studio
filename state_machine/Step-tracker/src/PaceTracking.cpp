@@ -3,9 +3,9 @@
 #include "BoardConfig.h"
 
 // Constants for pace classification based on time between steps (in ms)
-const int WALKING_THRESHOLD_TIME = 850;  // Time in milliseconds for walking (e.g., 800 ms between steps)
-const int JOGGING_THRESHOLD_TIME = 450;  // Time for jogging (e.g., 400 ms between steps)
-const int RUNNING_THRESHOLD_TIME = 320;  // Time for running (e.g., 200 ms between steps)
+const int WALKING_THRESHOLD_TIME = 850;  // Time in milliseconds for walking (e.g., 850 ms between steps)
+const int JOGGING_THRESHOLD_TIME = 450;  // Time for jogging (e.g., 450 ms between steps)
+const int RUNNING_THRESHOLD_TIME = 320;  // Time for running (e.g., 320 ms between steps)
 
 String previousPace = "";  // Variable to store previous pace
 
