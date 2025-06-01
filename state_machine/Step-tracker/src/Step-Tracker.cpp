@@ -1,12 +1,15 @@
 #include "Calibration.h"
 #include "PaceTracking.h"
 #include "StepTracking.h"
+#include "LCD.h"
 
 int Setup = 1;
 
 void setup() {
-    startCalibration(); // Starts calibration process (only runs once)
+   // startCalibration(); // Starts calibration process (only runs once)
     // Optional: set up display, EEPROM, etc.
+
+    LCD_Setup();
 }
 
 void loop() 
